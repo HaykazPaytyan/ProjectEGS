@@ -36,7 +36,13 @@ public class UserServlet extends HttpServlet {
         User user = this.userDtoToUser(userDto);
 
         UserDaoImplementation userDaoImplementation = new UserDaoImplementation();
-        userDaoImplementation.create(user);
+        User user1 = userDaoImplementation.create(user);
+
+        response.setContentType("application/json; charset=utf-8");
+
+        PrintWriter writer = response.getWriter();
+        writer.print(new Gson().toJson(user1));
+        writer.flush();
 
     }
 

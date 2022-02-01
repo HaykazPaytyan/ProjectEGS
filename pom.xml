@@ -25,7 +25,33 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.27</version>
         </dependency>
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>8.4.3</version>
+        </dependency>
+
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>8.4.3</version>
+                <configuration>
+                    <user>root</user>
+                    <password>12345678</password>
+                    <schemas>
+                        <schema>project</schema>
+                    </schemas>
+                    <locations>
+                        <location>filesystem:./src/main/resources/db/migration</location>
+                    </locations>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 
 </project>

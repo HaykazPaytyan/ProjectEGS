@@ -25,8 +25,7 @@ public class TransactionDaoImplementation implements TransactionDao {
 
         try {
 
-            Connector connector = new Connector();
-            connection = connector.getConnection();
+            connection = Connector.getConnection();
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setLong(1,id);
             resultSet = preparedStatement.executeQuery();
@@ -48,14 +47,7 @@ public class TransactionDaoImplementation implements TransactionDao {
 
         } catch (Exception e) {
             e.printStackTrace();
-        }finally {
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
-
 
         return transaction;
     }
@@ -74,8 +66,7 @@ public class TransactionDaoImplementation implements TransactionDao {
 
         try {
 
-            Connector connector = new Connector();
-            connection = connector.getConnection();
+            connection = Connector.getConnection();
             statement = connection.createStatement();
             resultSet = statement.executeQuery(sql);
 
@@ -96,12 +87,6 @@ public class TransactionDaoImplementation implements TransactionDao {
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-        }finally {
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
 
         return transactions;
@@ -121,8 +106,7 @@ public class TransactionDaoImplementation implements TransactionDao {
 
         try {
 
-            Connector connector = new Connector();
-            connection = connector.getConnection();
+            connection = Connector.getConnection();
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setLong(1,user.getId());
             preparedStatement.setLong(2,product.getId());
@@ -143,12 +127,6 @@ public class TransactionDaoImplementation implements TransactionDao {
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-        }finally {
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
 
         return transaction;
@@ -170,8 +148,7 @@ public class TransactionDaoImplementation implements TransactionDao {
 
         try {
 
-            Connector connector = new Connector();
-            connection = connector.getConnection();
+            connection = Connector.getConnection();
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setLong(1,user.getId());
             preparedStatement.setLong(2,product.getId());
@@ -195,12 +172,6 @@ public class TransactionDaoImplementation implements TransactionDao {
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-        }finally {
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
 
         return transaction;
@@ -218,8 +189,7 @@ public class TransactionDaoImplementation implements TransactionDao {
 
         try {
 
-            Connector connector = new Connector();
-            connection = connector.getConnection();
+            connection = Connector.getConnection();
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setLong(1,id);
 
@@ -230,12 +200,6 @@ public class TransactionDaoImplementation implements TransactionDao {
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-        }finally {
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
 
 

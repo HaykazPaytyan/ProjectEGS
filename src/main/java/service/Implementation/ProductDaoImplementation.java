@@ -21,8 +21,7 @@ public class ProductDaoImplementation implements ProductDao {
 
         try {
 
-            Connector connector = new Connector();
-            connection = connector.getConnection();
+            connection = Connector.getConnection();
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setLong(1,id);
             resultSet = preparedStatement.executeQuery();
@@ -38,12 +37,6 @@ public class ProductDaoImplementation implements ProductDao {
 
         } catch (Exception e) {
             e.printStackTrace();
-        }finally {
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
 
         return product;
@@ -63,8 +56,7 @@ public class ProductDaoImplementation implements ProductDao {
 
         try {
 
-            Connector connector = new Connector();
-            connection = connector.getConnection();
+            connection = Connector.getConnection();
             statement = connection.createStatement();
             resultSet = statement.executeQuery(sql);
 
@@ -82,12 +74,6 @@ public class ProductDaoImplementation implements ProductDao {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
 
-        }finally {
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
 
         return products;
@@ -106,8 +92,7 @@ public class ProductDaoImplementation implements ProductDao {
 
         try {
 
-            Connector connector = new Connector();
-            connection = connector.getConnection();
+            connection = Connector.getConnection();
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1,product.getName());
             preparedStatement.setDouble(2,product.getPrice());
@@ -127,12 +112,6 @@ public class ProductDaoImplementation implements ProductDao {
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-        }finally {
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
 
         return product1;
@@ -151,8 +130,7 @@ public class ProductDaoImplementation implements ProductDao {
 
         try {
 
-            Connector connector = new Connector();
-            connection = connector.getConnection();
+            connection = Connector.getConnection();
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1,product.getName());
             preparedStatement.setDouble(2,product.getPrice());
@@ -173,12 +151,6 @@ public class ProductDaoImplementation implements ProductDao {
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-        }finally {
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
 
         return product1;
@@ -195,8 +167,7 @@ public class ProductDaoImplementation implements ProductDao {
 
         try {
 
-            Connector connector = new Connector();
-            connection = connector.getConnection();
+            connection = Connector.getConnection();
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setLong(1,id);
 
@@ -207,12 +178,6 @@ public class ProductDaoImplementation implements ProductDao {
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-        }finally {
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
 
         return isOk;

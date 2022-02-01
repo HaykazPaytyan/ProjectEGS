@@ -6,9 +6,9 @@ import java.sql.SQLException;
 
 public class Connector {
 
-    private Connection connection = null;
+    private static Connection connection = null;
 
-    public Connector() {
+    static {
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -17,14 +17,14 @@ public class Connector {
         }
 
         try {
-            this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/project","root","12345678");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/project","root","12345678");
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
     }
 
-    public Connection getConnection() {
+    public static Connection getConnection() {
         return connection;
     }
 

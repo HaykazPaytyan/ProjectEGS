@@ -21,8 +21,7 @@ public class UserDaoImplementation implements UserDao {
 
         try {
 
-            Connector connector = new Connector();
-            connection = connector.getConnection();
+            connection = Connector.getConnection();
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setLong(1,id);
             resultSet = preparedStatement.executeQuery();
@@ -38,12 +37,6 @@ public class UserDaoImplementation implements UserDao {
 
         } catch (Exception e) {
             e.printStackTrace();
-        }finally {
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
 
         return user;
@@ -63,8 +56,7 @@ public class UserDaoImplementation implements UserDao {
 
         try {
 
-            Connector connector = new Connector();
-            connection = connector.getConnection();
+            connection = Connector.getConnection();
             statement = connection.createStatement();
             resultSet = statement.executeQuery(sql);
 
@@ -81,13 +73,6 @@ public class UserDaoImplementation implements UserDao {
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-
-        }finally {
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
 
         return users;
@@ -105,8 +90,7 @@ public class UserDaoImplementation implements UserDao {
         PreparedStatement preparedStatement = null;
 
         try {
-            Connector connector = new Connector();
-            connection = connector.getConnection();
+            connection = Connector.getConnection();
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1,user.getFirst_name());
             preparedStatement.setString(2,user.getLast_name());
@@ -118,20 +102,10 @@ public class UserDaoImplementation implements UserDao {
             if (rs == 1)
             {
                 user1 = new User();
-                user1.setId(user.getId());
-                user1.setFirst_name(user.getFirst_name());
-                user1.setLast_name(user.getLast_name());
-                user1.setEmail(user.getEmail());
-                user1.setPassword(user.getPassword());
+                user1 = this.findByUserEmail(user.getEmail());
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-        }finally {
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
 
         return user1;
@@ -151,8 +125,7 @@ public class UserDaoImplementation implements UserDao {
 
         try {
 
-            Connector connector = new Connector();
-            connection = connector.getConnection();
+            connection = Connector.getConnection();
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1,user.getFirst_name());
             preparedStatement.setString(2,user.getLast_name());
@@ -173,12 +146,6 @@ public class UserDaoImplementation implements UserDao {
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-        }finally {
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
 
         return user1;
@@ -195,8 +162,7 @@ public class UserDaoImplementation implements UserDao {
 
         try {
 
-            Connector connector = new Connector();
-            connection = connector.getConnection();
+            connection = Connector.getConnection();
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setLong(1,id);
 
@@ -207,14 +173,42 @@ public class UserDaoImplementation implements UserDao {
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-        }finally {
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
 
         return isOk;
     }
+
+    @Override
+    public User findByUserEmail(String email) {
+
+        final String sql = "SELECT * FROM users WHERE email=?";
+        User user = null;
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+
+            connection = Connector.getConnection();
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1,email);
+            resultSet = preparedStatement.executeQuery();
+
+            if(resultSet.next()){
+                user = new User();
+                user.setId(resultSet.getInt("id"));
+                user.setFirst_name(resultSet.getString("first_name"));
+                user.setLast_name(resultSet.getString("last_name"));
+                user.setEmail(resultSet.getString("email"));
+                user.setPassword(resultSet.getString("password"));
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return user;
+    }
+
+
 }

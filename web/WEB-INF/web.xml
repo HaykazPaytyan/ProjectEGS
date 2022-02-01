@@ -75,6 +75,16 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>AccountServlet</servlet-name>
+        <servlet-class>servlet.account.AccountServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AccountServlet</servlet-name>
+        <url-pattern>/account</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>AccountEditServlet</servlet-name>
         <servlet-class>servlet.account.AccountEditServlet</servlet-class>
     </servlet>

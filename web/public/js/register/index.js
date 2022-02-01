@@ -15,8 +15,8 @@ $(document).ready(function(){
             data: JSON.stringify({first_name: user_first_name,last_name: user_last_name, email: user_email,password: user_password, password_repeat:user_password_repeat}),
             contentType: "application/json; charset=utf-8",
             traditional: true,
-            success: function (data) {
-                window.location.href = "http://localhost:8080/account";
+            success: function (response) {
+                window.location.href = "http://localhost:8080/account/" + response.id;
             }
         });
 
