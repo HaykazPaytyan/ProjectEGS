@@ -115,5 +115,56 @@
     </servlet-mapping>
 
 
+    <servlet>
+        <servlet-name>AdminIndexServlet</servlet-name>
+        <servlet-class>servlet.admin.AdminIndexServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AdminIndexServlet</servlet-name>
+        <url-pattern>/admin</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AdminUserEditServlet</servlet-name>
+        <servlet-class>servlet.admin.user.AdminUserEditServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AdminUserEditServlet</servlet-name>
+        <url-pattern>/admin/user/edit/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AdminUserDeleteServlet</servlet-name>
+        <servlet-class>servlet.admin.user.AdminUserDeleteServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AdminUserDeleteServlet</servlet-name>
+        <url-pattern>/admin/user/delete/*</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>AdminProductEditServlet</servlet-name>
+        <servlet-class>servlet.admin.product.AdminProductEditServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AdminProductEditServlet</servlet-name>
+        <url-pattern>/admin/product/edit/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AdminProductDeleteServlet</servlet-name>
+        <servlet-class>servlet.admin.product.AdminProductDeleteServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AdminProductDeleteServlet</servlet-name>
+        <url-pattern>/admin/product/delete/*</url-pattern>
+    </servlet-mapping>
+
 
 </web-app>
