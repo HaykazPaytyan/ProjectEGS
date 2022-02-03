@@ -8,7 +8,7 @@ $(document).ready(function(){
 
         $.ajax({
             type: 'DELETE',
-            url: 'http://localhost:8080/api/user/'+id,
+            url: 'http://localhost:8080/api/user/delete/'+id,
             success: function(response) {
                 window.location.href = "http://localhost:8080/admin";
             }

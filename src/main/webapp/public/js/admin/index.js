@@ -15,7 +15,7 @@ $(document).ready(function() {
 
     $.ajax({
         type: 'GET',
-        url: 'http://localhost:8080/api/user',
+        url: 'http://localhost:8080/api/users',
         dataType: 'JSON',
         success: function(response) {
             var len = response.length;
@@ -45,7 +45,7 @@ $(document).ready(function() {
 
     $.ajax({
         type: 'GET',
-        url: 'http://localhost:8080/api/product',
+        url: 'http://localhost:8080/api/products',
         dataType: 'JSON',
         success: function(response) {
             var len = response.length;
@@ -83,7 +83,7 @@ $(document).ready(function() {
 
         $.ajax({
             type: 'POST',
-            url: 'http://localhost:8080/api/user',
+            url: 'http://localhost:8080/api/user/create',
             data: JSON.stringify({first_name: user_first_name,last_name: user_last_name,email: user_email,password: user_password,password_repeat: user_password_repeat}),
             contentType: "application/json; charset=utf-8",
             traditional: true,
@@ -106,7 +106,7 @@ $(document).ready(function() {
 
         $.ajax({
             type: 'POST',
-            url: 'http://localhost:8080/api/product',
+            url: 'http://localhost:8080/api/product/create',
             data: JSON.stringify({name: product_name,price: product_price,count: product_count,code: product_code}),
             contentType: "application/json; charset=utf-8",
             traditional: true,

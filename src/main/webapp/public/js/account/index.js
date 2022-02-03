@@ -22,7 +22,7 @@ $(document).ready(function(){
 
     $.ajax({
         type: 'GET',
-        url: 'http://localhost:8080/api/product',
+        url: 'http://localhost:8080/api/products',
         dataType: 'JSON',
         success: function (response) {
             var len = response.length;

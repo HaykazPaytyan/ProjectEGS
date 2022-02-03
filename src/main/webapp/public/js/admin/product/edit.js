@@ -15,7 +15,7 @@ $(document).ready(function() {
 
         $.ajax({
             type: 'PUT',
-            url: 'http://localhost:8080/api/product/'+ id,
+            url: 'http://localhost:8080/api/product/edit/'+ id,
             data: JSON.stringify({name: product_name,price: product_price,count: product_count,code: product_code}),
             contentType: "application/json; charset=utf-8",
             traditional: true,

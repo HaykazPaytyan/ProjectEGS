@@ -11,7 +11,7 @@ $(document).ready(function(){
 
         $.ajax({
             type: 'POST',
-            url: 'http://localhost:8080/api/user',
+            url: 'http://localhost:8080/api/user/create',
             data: JSON.stringify({first_name: user_first_name,last_name: user_last_name, email: user_email,password: user_password, password_repeat:user_password_repeat}),
             contentType: "application/json; charset=utf-8",
             traditional: true,

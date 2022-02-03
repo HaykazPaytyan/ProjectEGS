@@ -25,7 +25,7 @@ $(document).ready(function(){
 
         $.ajax({
             type: 'DELETE',
-            url: 'http://localhost:8080/api/user/'+id,
+            url: 'http://localhost:8080/api/user/delete/'+id,
             success: function (data) {
                 window.location.href = "http://localhost:8080";
             }
